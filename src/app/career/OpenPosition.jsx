@@ -61,6 +61,7 @@ const OpenPosition = () => {
         setLoading(false);
       } catch (err) {
         setError("Failed to fetch blog data.");
+        // setError("Failed to fetch blog data.");
         setLoading(false);
       }
     };
