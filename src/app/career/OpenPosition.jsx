@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import Slider from "react-slick";
+// import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/pagination';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
-import CountUp from 'react-countup';
+// import CountUp from 'react-countup';
 import { GoDotFill } from 'react-icons/go';
 import 'swiper/css';
 import 'swiper/css/navigation';

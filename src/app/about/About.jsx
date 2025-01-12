@@ -1,6 +1,6 @@
 import React from 'react'
 import AboutDetails from './AboutDetails'
-import Awards from '../../component/about/Awards'
+// import Awards from '../../component/about/Awards'
 import BrandAwards from '../../component/about/BrandAwards'
 import { Testimonials } from '../../component/home/Testimonials'
 import ProjectTacticsAndStrategies from '../../component/about/ProjectTacticsAndStrategies'

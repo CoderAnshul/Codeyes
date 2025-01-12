@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { GoDotFill } from "react-icons/go";
 import { Link } from "react-router-dom";
-import Banner from "../../component/home/Banner";
-import Sidebar from "./Sidebar";
+// import Banner from "../../component/home/Banner";
+// import Sidebar from "./Sidebar";
 import axios from "axios";
 import moment from "moment";
 import Loader from "../../component/layout/Loader";
@@ -10,7 +10,7 @@ import { stripHtml } from "string-strip-html";
 import { BASE_URL } from "../../utils/config";
 import { useDispatch, useSelector } from "react-redux";
 import { addAllBlog, setFirstBlogVisit, setShowBlogs } from "../../utils/blogSlice";
-import CommonBanner from "../../component/common/CommonBanner";
+// import CommonBanner from "../../component/common/CommonBanner";
 import AnimatedReadMore from "../../component/common/AnimatedReadMore";
 import News from "../../component/home/News";
 
