@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'flowbite';
+
+
+body {
+  font-family: 'Archivo', sans-serif;
+  /* overflow-x: hidden; */
+}
+
+.custom_container {
+  @apply mx-[24px] lg:mx-[2%] xl:mx-[3%] py-3;
+}
+
+.custom_global_space {
+  padding-top: 45px;
+}
+
+.img_box img {
+  transition: 0.1s ease-in-out;
+}
+
+.img_box:hover img {
+  border-radius: 80px;
+}
