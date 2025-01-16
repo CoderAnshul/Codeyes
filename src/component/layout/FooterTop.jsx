@@ -8,7 +8,7 @@ export default function FooterTop() {
         <div className={`py-20 sm:py-32`}>
             <div className="space-y-2 grid justify-center">
                 <div className='m-auto relative'>
-                    <img src="/image/home/happy.webp" alt="Error1" className='absolute bottom-[120px] md:left-[-72px] animate_zoom_in delay-500' />
+                    <img src="/image/home/happy.png" alt="Error1" className='absolute bottom-[120px] md:left-[-72px] animate_zoom_in delay-500' />
                     <img src="/image/home/about-us3.webp" alt="Error1" className='absolute w-[130px] top-[-50px] right-2 md:-right-10 animate_zoom_in delay-500' />
                     <h2 className="text-[52px] font-semibold text-center mb-6 z-10 relative">Want To Work With Us?</h2>
                     <div className="flex justify-center mt-10">
