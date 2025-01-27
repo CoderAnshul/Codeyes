@@ -6,7 +6,7 @@ export default function CommonBanner() {
             <div className='custom_container'>
                 <div className='grid grid-cols-12 sm:gap-x-10 gap-y-5 my-6'>
                     <div className='col-span-full sm:col-span-6 lg:col-span-8'>
-                        <h2 className="uppercase text-6xl md:text-7xl font-extrabold">
+                        <h2 className="uppercase text-4xl md:text-7xl font-extrabold">
                         Turning Ideas into <span style={{ WebkitTextStroke: '1px black', color: 'transparent' }}> Tangible Results</span>
                         </h2>
                     </div>

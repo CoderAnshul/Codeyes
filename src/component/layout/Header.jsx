@@ -15,6 +15,11 @@ export default function Header() {
   const [isSticky, setIsSticky] = useState(false);
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
   const [isSubmenuOpen1, setIsSubmenuOpen1] = useState(false);
+  const [openMenu, setOpenMenu] = useState(null);
+
+  const toggleMenu = (menu) => {
+    setOpenMenu(openMenu === menu ? null : menu);
+  };
 
   const location = useLocation();
   const dispatch = useDispatch();
@@ -226,7 +231,7 @@ dispatch(setShowBlogs(allBlogs));
                 </div>
       </div>
       <div
-        className={`fixed  right-0 w-full h-[460px] border-b border-black bg-white z-[30000] transform ${isDrawerOpen ? 'translate-y-0 top-0' : '-translate-y-full -top-24'} transition-transform duration-300 ease-in-out z-50`}
+        className={`fixed  right-0 w-full min-h-[460px] border-b border-black bg-white z-[30000] transform ${isDrawerOpen ? 'translate-y-0 top-0' : '-translate-y-full -top-24'} transition-transform duration-300 ease-in-out z-50`}
       >
         <div className='grid col-span-12 bg-[#fbfaf5] py-3 px-10'>
           <div className={`col-span-6`}>
@@ -254,12 +259,54 @@ dispatch(setShowBlogs(allBlogs));
           <p className='cursor-pointer nav_link2'><Link to="/about" className='text-[15px] font-semibold' onClick={closeDrawer}>ABOUT</Link>
             <span className={`hover_img2 ${currentPathname === '/about' ? '!block' : ''}`}><svg className="qodef-svg--menu-brush qodef-menu-item-brush qodef-menu-item-brush fill-[#ffde8b]" width="74.204" height="41.153" viewBox="0 0 74.204 41.153"><path d="M6.763 35.078a6.232 6.232 0 0 1-5.026-2.792 9.966 9.966 0 0 1 .5-11.917C3.132 19.364 24.63-4.2 65.32.659c3.717.444 6.441 4.565 6.085 9.2s-3.658 8.034-7.374 7.6C29.2 13.3 11.46 32.715 11.284 32.912a6.049 6.049 0 0 1-4.521 2.166Z" transform="rotate(4.992 1.5265 35.01869904)"></path></svg></span></p>
 
-            <p className='cursor-pointer nav_link2'><Link to="/growth-advertising" className='text-[15px] font-semibold' onClick={closeDrawer}>GROWTH ADVERTISING</Link>
+            {/* <p className='cursor-pointer nav_link2'><Link to="/growth-advertising" className='text-[15px] font-semibold' onClick={closeDrawer}>GROWTH ADVERTISING</Link>
             <span className={`hover_img2 ${currentPathname === '/growth-advertising' ? '!block' : ''}`}><svg className="qodef-svg--menu-brush qodef-menu-item-brush qodef-menu-item-brush fill-[#ffde8b]" width="74.204" height="41.153" viewBox="0 0 74.204 41.153"><path d="M6.763 35.078a6.232 6.232 0 0 1-5.026-2.792 9.966 9.966 0 0 1 .5-11.917C3.132 19.364 24.63-4.2 65.32.659c3.717.444 6.441 4.565 6.085 9.2s-3.658 8.034-7.374 7.6C29.2 13.3 11.46 32.715 11.284 32.912a6.049 6.049 0 0 1-4.521 2.166Z" transform="rotate(4.992 1.5265 35.01869904)"></path></svg></span></p>
 
             <p className='cursor-pointer nav_link2'><Link to="/creative-marketing" className='text-[15px] font-semibold' onClick={closeDrawer}>CREATIVE MARKETING</Link>
-            <span className={`hover_img2 ${currentPathname === '/creative-marketing' ? '!block' : ''}`}><svg className="qodef-svg--menu-brush qodef-menu-item-brush qodef-menu-item-brush fill-[#ffde8b]" width="74.204" height="41.153" viewBox="0 0 74.204 41.153"><path d="M6.763 35.078a6.232 6.232 0 0 1-5.026-2.792 9.966 9.966 0 0 1 .5-11.917C3.132 19.364 24.63-4.2 65.32.659c3.717.444 6.441 4.565 6.085 9.2s-3.658 8.034-7.374 7.6C29.2 13.3 11.46 32.715 11.284 32.912a6.049 6.049 0 0 1-4.521 2.166Z" transform="rotate(4.992 1.5265 35.01869904)"></path></svg></span></p>
-         
+            <span className={`hover_img2 ${currentPathname === '/creative-marketing' ? '!block' : ''}`}><svg className="qodef-svg--menu-brush qodef-menu-item-brush qodef-menu-item-brush fill-[#ffde8b]" width="74.204" height="41.153" viewBox="0 0 74.204 41.153"><path d="M6.763 35.078a6.232 6.232 0 0 1-5.026-2.792 9.966 9.966 0 0 1 .5-11.917C3.132 19.364 24.63-4.2 65.32.659c3.717.444 6.441 4.565 6.085 9.2s-3.658 8.034-7.374 7.6C29.2 13.3 11.46 32.715 11.284 32.912a6.049 6.049 0 0 1-4.521 2.166Z" transform="rotate(4.992 1.5265 35.01869904)"></path></svg></span></p> */}
+               <div>
+      <p className="cursor-pointer text-[15px] font-semibold flex justify-between items-center" onClick={() => toggleMenu('growth')}>GROWTH ADVERTISING
+      <span className={`ml-2 transform transition-transform duration-300 ${openMenu === 'growth' ? 'rotate-180' : ''}`}>↓</span>
+      </p>
+      <div
+        className={`pl-4 flex flex-col gap-2 overflow-hidden transition-all duration-300 ease-in-out mt-2 ${openMenu === 'growth' ? 'max-h-[500px]' : 'max-h-0'}`}
+      >
+        {openMenu === 'growth' && (
+          <>
+            <Link to='/growth-advertising' onClick={closeDrawer} className='text-[14px] font-medium'>Growth Advertising</Link>
+            <Link to='/growth-advertising/influencer-marketing' onClick={closeDrawer} className='text-[14px] font-medium'>Influencer Marketing</Link>
+            <Link to='/growth-advertising/ecommerce-marketing' onClick={closeDrawer} className='text-[14px] font-medium'>E-commerce Marketing</Link>
+            <Link to='/growth-advertising/facebook-ads' onClick={closeDrawer} className='text-[14px] font-medium'>Facebook Ads</Link>
+            <Link to='/growth-advertising/ppc' onClick={closeDrawer} className='text-[14px] font-medium'>PPC (Pay-Per-Click)</Link>
+            <Link to='/growth-advertising/youtube-marketing' onClick={closeDrawer} className='text-[14px] font-medium'>YouTube Marketing</Link>
+            <Link to='/growth-advertising/email-marketing' onClick={closeDrawer} className='text-[14px] font-medium'>Email Marketing</Link>
+          </>
+        )}
+      </div>
+    </div>
+
+    {/* Creative Marketing Accordion */}
+    <div>
+      <p className="cursor-pointer text-[15px] font-semibold  flex justify-between items-center" onClick={() => toggleMenu('creative')}>CREATIVE MARKETING
+      <span className={`ml-2 transform transition-transform duration-300 ${openMenu === 'creative' ? 'rotate-180' : ''}`}>↓</span>
+      </p>
+      <div
+        className={`pl-4 flex flex-col gap-2 overflow-hidden transition-all duration-300 ease-in-out mt-2 ${openMenu === 'creative' ? 'max-h-[500px]' : 'max-h-0'}`}
+      >
+        {openMenu === 'creative' && (
+          <>
+            <Link to='/creative-marketing' onClick={closeDrawer} className='text-[14px] font-medium'>Creative Marketing</Link>
+            <Link to='/creative-marketing/branding' onClick={closeDrawer} className='text-[14px] font-medium'>Branding</Link>
+            <Link to='/creative-marketing/graphic-design' onClick={closeDrawer} className='text-[14px] font-medium'>Graphic Design</Link>
+            <Link to='/creative-marketing/3d-branding' onClick={closeDrawer} className='text-[14px] font-medium'>3D Branding</Link>
+            <Link to='/creative-marketing/product-photography' onClick={closeDrawer} className='text-[14px] font-medium'>Product Photography</Link>
+            <Link to='/creative-marketing/modeling' onClick={closeDrawer} className='text-[14px] font-medium'>Modeling</Link>
+            <Link to='/creative-marketing/video-editing' onClick={closeDrawer} className='text-[14px] font-medium'>Video Editing</Link>
+            <Link to='/creative-marketing/social-media-management' onClick={closeDrawer} className='text-[14px] font-medium'>Social Media Management</Link>
+          </>
+        )}
+    </div>
+    </div>
           <p className='cursor-pointer nav_link3'><Link to="/portfolio" className='text-[15px] font-semibold' onClick={closeDrawer}>PORTFOLIO</Link>
             <span className={`hover_img3 ${currentPathname === '/portfolio' ? '!block' : ''}`}><svg className="qodef-svg--menu-brush qodef-menu-item-brush qodef-menu-item-brush fill-[#ffde8b]" width="74.204" height="41.153" viewBox="0 0 74.204 41.153"><path d="M6.763 35.078a6.232 6.232 0 0 1-5.026-2.792 9.966 9.966 0 0 1 .5-11.917C3.132 19.364 24.63-4.2 65.32.659c3.717.444 6.441 4.565 6.085 9.2s-3.658 8.034-7.374 7.6C29.2 13.3 11.46 32.715 11.284 32.912a6.049 6.049 0 0 1-4.521 2.166Z" transform="rotate(4.992 1.5265 35.01869904)"></path></svg></span></p>
           <p className='cursor-pointer nav_link4'><Link to="/faq" className='text-[15px] font-semibold' onClick={closeDrawer}>FAQs</Link>

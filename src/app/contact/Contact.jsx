@@ -6,15 +6,15 @@ import { GOOGLE_MAPS_API_KEY } from '../../utils/config';
 const mapContainerStyle = {
     width: "100%",
     height: "700px",
-  };
+};
 
 export default function Contact() {
     const [mapCenter, setMapCenter] = useState({
         lat: 21.1702,
         lng: 72.8311,
     });
-  const [infoWindowVisible, setInfoWindowVisible] = useState(false);
-  const [infoWindowPosition, setInfoWindowPosition] = useState(mapCenter);
+    const [infoWindowVisible, setInfoWindowVisible] = useState(false);
+    const [infoWindowPosition, setInfoWindowPosition] = useState(mapCenter);
     const [selectedAddress, setSelectedAddress] = useState({
         country: 'India',
         city: 'Surat, Gujarat, India',
@@ -25,22 +25,29 @@ export default function Contact() {
     const handleMarkerClick = (position) => {
         setInfoWindowPosition(position);
         setInfoWindowVisible(true);
-      };
-      const handleInfoWindowClose = () => {
+    };
+
+    const handleInfoWindowClose = () => {
         setInfoWindowVisible(false);
-      };
+    };
 
     const handleLocationClick = (location, address) => {
         setMapCenter(location);
         setSelectedAddress(address);
+
+        // Scroll to the map container on mobile view
+        if (window.innerWidth <= 768) { // Check for phone view
+            const mapContainer = document.getElementById('mapContainer');
+            mapContainer.scrollIntoView({ behavior: 'smooth' });
+        }
     };
 
     return (
-        <> 
+        <>
             <div className={`custom_container sm:!py-10`}>
                 <div className={`grid lg:grid-cols-12 gap-10`}>
                     <div className={`col-span-6 content-end pb-8 max-lg:order-1 xl:mr-32`}>
-                    <div className='space-y-4 mb-20 lg:pr-10'>
+                        <div className='space-y-4 mb-20 lg:pr-10'>
                             <div className='relative'>
                                 <h1 className='text-[50px] sm:text-[64px] sm:leading-[70px] font-semibold relative z-10'>
                                     Let’s talk about your goals
@@ -79,29 +86,27 @@ export default function Contact() {
                             </div>
                         </div>
                     </div>
-                    <div className={`col-span-6 rounded-[50px] overflow-hidden`}>
-                        {/* <img src="/image/portfoilo/contact.jpg" alt="Error" className='h-full' /> */}
+                    <div className={`col-span-6 rounded-[50px] overflow-hidden`} id="mapContainer">
                         <div className="w-full lg:col-span-1">
-          <LoadScript googleMapsApiKey={GOOGLE_MAPS_API_KEY}>
-            <GoogleMap mapContainerStyle={mapContainerStyle} center={mapCenter} zoom={14}>
-              <Marker position={mapCenter} onClick={() => handleMarkerClick(mapCenter)} />
+                            <LoadScript googleMapsApiKey={GOOGLE_MAPS_API_KEY}>
+                                <GoogleMap mapContainerStyle={mapContainerStyle} center={mapCenter} zoom={14}>
+                                    <Marker position={mapCenter} onClick={() => handleMarkerClick(mapCenter)} />
 
-              {infoWindowVisible && (
-                <InfoWindow position={infoWindowPosition} onCloseClick={handleInfoWindowClose}>
-                  <div className="flex items-center">
-                    <p>{selectedAddress?.city || "No address provided"}</p>
-                  </div>
-                </InfoWindow>
-              )}
-            </GoogleMap>
-          </LoadScript>
-        </div>
-                        
+                                    {infoWindowVisible && (
+                                        <InfoWindow position={infoWindowPosition} onCloseClick={handleInfoWindowClose}>
+                                            <div className="flex items-center">
+                                                <p>{selectedAddress?.city || "No address provided"}</p>
+                                            </div>
+                                        </InfoWindow>
+                                    )}
+                                </GoogleMap>
+                            </LoadScript>
+                        </div>
                     </div>
                 </div>
             </div>
             <div className="custom_container mb-10">
-                <ContactForm  />
+                <ContactForm />
             </div>
         </>
     );

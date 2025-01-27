@@ -11,7 +11,7 @@ export default function AboutDetails() {
                     </div>
                     <div className={`sm:px-10 p-3 sm:py-8 ${index === "1" ? 'bg-white' : 'bg-[#c3d9bd]'} hover:bg-white border-b border-black cursor-pointer`} onMouseEnter={() => setIndex("1")}>
                         <div className={`flex items-center gap-2`}>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="44.298" height="44.187" viewBox="0 0 137.298 135.187">
+                            <svg xmlns="http://www.w3.org/2000/svg" className='w-[10vw] h-[10vw] max-h-12 max-w-12 lg:w-[6vw] lg:h-[6vw] lg:max-h-12 lg:max-w-12' viewBox="0 0 137.298 135.187">
                                 <defs>
                                     <radialGradient id="radial-gradient" cx="0.5" cy="0.5" r="0.521" gradientTransform="matrix(-0.242, -0.97, 1.147, -0.287, 0.047, 1.128)" gradientUnits="objectBoundingBox">
                                         <stop offset="0" stop-color="#ffde8b"></stop>
@@ -31,7 +31,7 @@ export default function AboutDetails() {
                     </div>
                     <div className={`sm:px-10 p-3 sm:py-8 ${index === "2" ? 'bg-white' : 'bg-[#c3d9bd]'} hover:bg-white border-b border-black cursor-pointer`} onMouseEnter={() => setIndex("2")}>
                         <div className={`flex items-center gap-2`}>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="50.298" height="50.187" viewBox="0 0 137.298 135.187">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50.298" height="50.187" viewBox="0 0 137.298 135.187">
                                 <defs>
                                     <radialGradient id="radial-gradient" cx="0.5" cy="0.5" r="0.521" gradientTransform="matrix(-0.242, -0.97, 1.147, -0.287, 0.047, 1.128)" gradientUnits="objectBoundingBox">
                                         <stop offset="0" stop-color="#ffde8b"></stop>
@@ -51,7 +51,7 @@ export default function AboutDetails() {
                     </div>
                     <div className={`sm:px-10 p-3 sm:py-8 ${index === "3" ? 'bg-white' : 'bg-[#c3d9bd]'} hover:bg-white border-b border-black cursor-pointer`} onMouseEnter={() => setIndex("3")}>
                         <div className={`flex items-center gap-2`}>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="50.298" height="50.187" viewBox="0 0 137.298 135.187">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50.298" height="50.187" viewBox="0 0 137.298 135.187">
                                 <defs>
                                     <radialGradient id="radial-gradient" cx="0.5" cy="0.5" r="0.521" gradientTransform="matrix(-0.242, -0.97, 1.147, -0.287, 0.047, 1.128)" gradientUnits="objectBoundingBox">
                                         <stop offset="0" stop-color="#ffde8b"></stop>
